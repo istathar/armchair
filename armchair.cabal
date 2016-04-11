@@ -1,0 +1,77 @@
+cabal-version:       >= 1.10
+name:                armchair
+version:             0.2.3
+synopsis:            Feedback gathering and collation
+license:             BSD3
+license-file:        LICENCE
+author:              Andrew Cowie <andrew@operationaldynamics.com>
+maintainer:          Andrew Cowie <andrew@operationaldynamics.com>
+copyright:           © 2016 Operational Dynamics Consulting Pty Ltd, and Others
+category:            Text
+tested-with:         GHC == 7.10
+
+build-type:          Simple
+
+library
+  default-language:  Haskell2010
+
+  build-depends:     base,
+                     containers,
+                     text
+
+  hs-source-dirs:    lib
+
+  exposed-modules:   Armchair.Nothing
+
+  ghc-options:       -O2
+                     -threaded
+                     -Wall
+                     -Wwarn
+                     -fwarn-tabs
+
+  ghc-prof-options:  -prof -fprof-auto-top
+
+
+executable           armchair
+  default-language:  Haskell2010
+
+  build-depends:     base,
+                     bytestring,
+                     containers,
+                     armchair
+
+  hs-source-dirs:    src
+  main-is:           ArmchairProgram.hs
+
+  ghc-options:       -O2
+                     -threaded
+                     -Wall
+                     -Wwarn
+                     -fwarn-tabs
+                     -funbox-strict-fields
+                     -fno-warn-missing-signatures
+                     -fno-warn-unused-binds
+                     -fno-warn-unused-do-bind
+
+  ghc-prof-options:  -prof -fprof-auto-top
+
+
+test-suite           check
+  default-language:  Haskell2010
+  type:              exitcode-stdio-1.0
+
+  build-depends:     base,
+                     bytestring,
+                     containers,
+                     transformers,
+                     mtl,
+                     HUnit,
+                     hspec,
+                     text,
+                     armchair
+
+  hs-source-dirs:    src,tests
+  main-is:           CheckProgram.hs
+                      
+
+-- vim: set tabstop=21 expandtab:

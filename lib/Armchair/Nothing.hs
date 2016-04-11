@@ -1,0 +1,2 @@
+module Armchair.Nothing where
+
