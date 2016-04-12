@@ -38,10 +38,42 @@ executable           armchair
   build-depends:     base,
                      bytestring,
                      containers,
+                     servant-server,
                      armchair
 
   hs-source-dirs:    src
   main-is:           ArmchairProgram.hs
+
+  ghc-options:       -O2
+                     -threaded
+                     -Wall
+                     -Wwarn
+                     -fwarn-tabs
+                     -funbox-strict-fields
+                     -fno-warn-missing-signatures
+                     -fno-warn-unused-binds
+                     -fno-warn-unused-do-bind
+
+  ghc-prof-options:  -prof -fprof-auto-top
+
+
+
+executable           example
+  default-language:  Haskell2010
+
+  build-depends:     base,
+                     bytestring,
+                     warp,
+                     wai,
+                     http-media,
+                     containers,
+                     time,
+                     aeson,
+                     aeson-compat,
+                     servant-server
+
+  hs-source-dirs:    tests
+  main-is:           Example.hs
 
   ghc-options:       -O2
                      -threaded

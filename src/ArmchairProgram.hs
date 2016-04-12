@@ -1,6 +1,6 @@
 module Main where
 
-import Armchair.Nothing
+import Armchair.Nothing ()
 
 main :: IO ()
 main = do
